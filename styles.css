@@ -1023,3 +1023,269 @@ body.light .floating-chip {
   .cv-preview { min-height: 330px; }
   .cv-sheet { transform: rotate(-2deg) scale(.9); }
 }
+
+
+/* =========================
+   V2 RESPONSIVE REPAIR
+   ========================= */
+
+.hero-copy,
+.hero-visual,
+.hero-stage {
+  min-width: 0;
+}
+
+.hero h1 {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.rotating-word {
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 56px;
+    padding-top: 130px;
+    padding-bottom: 70px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  .hero-visual {
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-stage {
+    width: min(100%, 560px);
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .stats-strip {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav {
+    height: 70px;
+  }
+
+  .mobile-menu {
+    top: 70px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-text {
+    font-size: 15px;
+  }
+
+  .hero {
+    width: min(calc(100% - 28px), var(--container));
+    padding-top: 108px;
+    padding-bottom: 52px;
+    gap: 42px;
+  }
+
+  .availability {
+    max-width: 100%;
+    margin-bottom: 22px;
+    font-size: 9px;
+  }
+
+  .hero .eyebrow {
+    font-size: 9px;
+    letter-spacing: .13em;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(40px, 12vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -.055em;
+  }
+
+  .rotating-word {
+    display: inline;
+    white-space: normal;
+  }
+
+  .hero-description {
+    max-width: 520px;
+    margin-top: 22px;
+    margin-bottom: 26px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    min-width: 0;
+    flex: 1 1 150px;
+  }
+
+  .hero-proof {
+    width: 100%;
+    margin-top: 36px;
+    gap: 18px;
+    justify-content: space-between;
+  }
+
+  .hero-proof div {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .hero-proof strong {
+    font-size: 20px;
+  }
+
+  .hero-proof span {
+    font-size: 9px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .hero-stage {
+    width: 100%;
+    max-width: 430px;
+    aspect-ratio: 1 / 1.08;
+    border-radius: 28px;
+  }
+
+  .hero-hud {
+    padding: 8px 9px;
+  }
+
+  .hud-top {
+    top: 14px;
+    left: 14px;
+  }
+
+  .hud-bottom {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .floating-chip {
+    padding: 7px 9px;
+  }
+
+  .chip-one {
+    top: 20%;
+    right: 5%;
+  }
+
+  .chip-two {
+    bottom: 30%;
+    left: 4%;
+  }
+
+  .chip-three {
+    top: 44%;
+    right: 5%;
+  }
+
+  .terminal-v2 {
+    width: min(270px, calc(100% - 36px));
+    left: 50%;
+    right: auto;
+    bottom: 22px;
+    transform: translateX(-50%);
+  }
+
+  .terminal-card pre {
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+  .stats-strip {
+    width: min(calc(100% - 28px), var(--container));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-block {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero {
+    padding-top: 96px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 11.5vw, 50px);
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .hero-proof div {
+    text-align: center;
+  }
+
+  .hero-stage {
+    max-width: 100%;
+    aspect-ratio: 1 / 1.12;
+  }
+
+  .floating-chip {
+    font-size: 6px;
+  }
+
+  .terminal-v2 {
+    width: calc(100% - 28px);
+  }
+
+  .stats-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-block {
+    padding: 18px 8px;
+  }
+
+  .stat-number {
+    font-size: 30px;
+  }
+}
