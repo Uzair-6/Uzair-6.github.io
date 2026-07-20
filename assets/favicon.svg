@@ -1,1 +1,6 @@
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#5ee7f3"/><stop offset="1" stop-color="#9d72ff"/></linearGradient></defs>
+<rect width="128" height="128" rx="28" fill="#070a12"/>
+<rect x="7" y="7" width="114" height="114" rx="23" fill="none" stroke="url(#g)" stroke-width="3"/>
+<text x="64" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="url(#g)">UA</text>
+</svg>
