@@ -1,55 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uzair Ali | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Uzair Ali — First-Class Computer Science graduate specialising in cybersecurity, data and software engineering." />
+  <meta name="theme-color" content="#070a12" />
 
-    
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    text-align:center;
-}
+  <meta property="og:title" content="Uzair Ali — Portfolio" />
+  <meta property="og:description" content="Cybersecurity, data and software projects by First-Class Computer Science graduate Uzair Ali." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://uzair-ali.dev" />
 
-h1{
-    font-size:60px;
-    margin-bottom:10px;
-}
-
-p{
-    font-size:22px;
-    color:#cbd5e1;
-}
-
-a{
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 24px;
-    background:white;
-    color:#0f172a;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-}
-</style>
-
+  <title>Uzair Ali — Cybersecurity, Data & Software</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
+
 <body>
+  <canvas id="network-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<div>
-<h1>Uzair Ali</h1>
-<p>Computer Science Graduate</p>
-<a href="https://github.com/Uzair-6">GitHub</a>
-</div>
+  <header class="nav-wrap">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Uzair Ali home">
+        <span class="brand-mark">UA</span>
+        <span class="brand-text">uzair-ali<span>.dev</span></span>
+      </a>
 
-    
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="command-button" aria-label="Open command menu" title="Command menu">
+          <span>⌘</span><span>K</span>
+        </button>
+        <a class="button button-small button-primary" href="#contact">Let's talk</a>
+        <button class="menu-button" id="menu-button" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-copy reveal">
+        <div class="availability">
+          <span class="pulse"></span>
+          Open to graduate opportunities
+        </div>
+
+        <p class="eyebrow">FIRST-CLASS COMPUTER SCIENCE GRADUATE</p>
+
+        <h1>
+          I build at the intersection of
+          <span class="gradient-text rotating-word" data-words="cybersecurity,data,software">cybersecurity</span>.
+        </h1>
+
+        <p class="hero-description">
+          I’m Uzair Ali — a technically curious graduate turning complex problems into secure,
+          useful and well-engineered digital systems.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary magnetic" href="#projects">
+            Explore my work
+            <span aria-hidden="true">↘</span>
+          </a>
+          <a class="button button-ghost magnetic" href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">
+            GitHub
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="hero-proof">
+          <div>
+            <strong>1st</strong>
+            <span>BSc Computer Science</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>Technical disciplines</span>
+          </div>
+          <div>
+            <strong>∞</strong>
+            <span>Curiosity to improve</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" data-delay="120">
+        <div class="orbital-card">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+
+          <div class="core">
+            <span class="core-label">SYSTEM</span>
+            <strong>ONLINE</strong>
+            <small>Portfolio v1.0</small>
+          </div>
+
+          <span class="tech-node node-python">Python</span>
+          <span class="tech-node node-sql">SQL</span>
+          <span class="tech-node node-siem">SIEM</span>
+          <span class="tech-node node-java">Java</span>
+
+          <div class="terminal-card">
+            <div class="terminal-top">
+              <span></span><span></span><span></span>
+              <p>uzair@portfolio:~</p>
+            </div>
+            <pre><code><span class="terminal-muted">$</span> whoami
+Uzair Ali
+
+<span class="terminal-muted">$</span> focus --current
+<span class="terminal-green">cyber · data · software</span>
+
+<span class="terminal-muted">$</span> status
+<span class="terminal-green">ready_to_build</span><span class="caret">▋</span></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-indicator" href="#about" aria-label="Scroll to about">
+        <span>Scroll</span>
+        <i></i>
+      </a>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">01 / ABOUT</p>
+        <h2>More than a list of technologies.</h2>
+        <p>I care about understanding the problem, choosing the right tools and producing work that stands up to scrutiny.</p>
+      </div>
+
+      <div class="about-grid">
+        <article class="glass-card about-main reveal">
+          <div class="card-kicker">MY APPROACH</div>
+          <h3>Technical depth. Clear thinking. Real-world awareness.</h3>
+          <p>
+            My First-Class Computer Science degree gave me experience across machine learning,
+            distributed systems, networking, data analysis and secure computing. Alongside that,
+            my professional roles developed my communication, organisation and judgement when
+            handling sensitive information and time-critical cases.
+          </p>
+          <p>
+            I’m now focused on graduate and junior opportunities where I can contribute quickly,
+            learn from strong teams and keep sharpening my technical ability.
+          </p>
+        </article>
+
+        <article class="glass-card metric-card reveal" data-delay="80">
+          <span class="metric-icon">◉</span>
+          <p>Current focus</p>
+          <strong>SOC analysis & data engineering</strong>
+          <small>Detection, investigation, automation and insight.</small>
+        </article>
+
+        <article class="glass-card metric-card reveal" data-delay="140">
+          <span class="metric-icon">⌁</span>
+          <p>Based in</p>
+          <strong>Huddersfield, UK</strong>
+          <small>Open to roles across Yorkshire and beyond.</small>
+        </article>
+
+        <article class="glass-card toolbox reveal" data-delay="180">
+          <div class="card-kicker">TOOLBOX</div>
+          <div class="tech-cloud">
+            <span>Python</span><span>SQL</span><span>Java</span><span>Pandas</span>
+            <span>Microsoft Sentinel</span><span>Splunk</span><span>Wireshark</span>
+            <span>Nmap</span><span>Git</span><span>Flask</span><span>MySQL</span>
+            <span>Machine Learning</span><span>Azure</span><span>Linux</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow">02 / SELECTED WORK</p>
+            <h2>Projects with substance.</h2>
+          </div>
+          <p>Each project is framed around the problem, my decisions and the technical result—not just a screenshot.</p>
+        </div>
+
+        <div class="project-filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter-button active" data-filter="all">All</button>
+          <button class="filter-button" data-filter="cyber">Cyber</button>
+          <button class="filter-button" data-filter="data">Data & AI</button>
+          <button class="filter-button" data-filter="software">Software</button>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card featured reveal" data-category="data">
+            <div class="project-visual retina-visual">
+              <div class="scan-line"></div>
+              <div class="retina"></div>
+              <div class="data-points">
+                <span style="--x:22%;--y:38%"></span>
+                <span style="--x:64%;--y:26%"></span>
+                <span style="--x:73%;--y:63%"></span>
+                <span style="--x:35%;--y:72%"></span>
+              </div>
+              <div class="visual-label">ML / CLASSIFICATION</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span>Machine Learning</span>
+                <span>Featured</span>
+              </div>
+              <h3>Diabetic Retinopathy Detection</h3>
+              <p>
+                Compared Random Forest, Logistic Regression and Naive Bayes models on clinical
+                retinal data using preprocessing and 10-fold cross-validation.
+              </p>
+              <div class="project-tags"><span>Weka</span><span>ML</span><span>Classification</span><span>Evaluation</span></div>
+              <div class="project-links">
+                <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">View repository ↗</a>
+                <button class="details-button" data-project="retinopathy">Case study +</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="cyber" data-delay="80">
+            <div class="project-visual sentinel-visual">
+              <div class="radar">
+                <i></i><i></i><i></i>
+                <b></b>
+              </div>
+              <div class="alert-chip">INCIDENT DETECTED</div>
+              <div class="visual-label">SOC / AUTOMATION</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span>Cybersecurity</span><span>Lab</span></div>
+              <h3>Sentinel Incident Automation</h3>
+              <p>
+                Built a Microsoft Sentinel workflow using Logic Apps, HTTP actions, JSON parsing
+                and automated incident updates.
+              </p>
+              <div class="project-tags"><span>Sentinel</span><span>SOAR</span><span>Logic Apps</span><span>KQL</span></div>
+              <div class="project-links">
+                <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">View work ↗</a>
+                <button class="details-button" data-project="sentinel">Case study +</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="software" data-delay="120">
+            <div class="project-visual distributed-visual">
+              <div class="server central">CENTRAL</div>
+              <div class="server client c1">VC001</div>
+              <div class="server client c2">VC002</div>
+              <div class="server client c3">VC003</div>
+              <div class="server client c4">VC004</div>
+              <svg viewBox="0 0 500 260" aria-hidden="true">
+                <path d="M250 130 L90 55 M250 130 L410 55 M250 130 L90 210 M250 130 L410 210"/>
+              </svg>
+              <div class="visual-label">DISTRIBUTED SYSTEMS</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span>Software Engineering</span><span>Java</span></div>
+              <h3>Distributed Vote Counting</h3>
+              <p>
+                Designed a central-node and multi-client system to coordinate and aggregate votes
+                across concurrent networked processes.
+              </p>
+              <div class="project-tags"><span>Java</span><span>Sockets</span><span>Concurrency</span><span>Networking</span></div>
+              <div class="project-links">
+                <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">View repository ↗</a>
+                <button class="details-button" data-project="voting">Case study +</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="data" data-delay="160">
+            <div class="project-visual dashboard-visual">
+              <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="trend-line">
+                <svg viewBox="0 0 500 180" aria-hidden="true">
+                  <path d="M10 155 C70 140, 80 100, 140 116 S230 58, 290 75 S390 20, 490 32"/>
+                </svg>
+              </div>
+              <div class="visual-label">DATA / INSIGHT</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span>Data Analysis</span><span>Python</span></div>
+              <h3>Football Data Exploration</h3>
+              <p>
+                Used Python and pandas to clean, explore and visualise football data, turning raw
+                match information into understandable trends.
+              </p>
+              <div class="project-tags"><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>EDA</span></div>
+              <div class="project-links">
+                <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">View repository ↗</a>
+                <button class="details-button" data-project="football">Case study +</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="experience">
+      <div class="section-heading split-heading reveal">
+        <div>
+          <p class="eyebrow">03 / EXPERIENCE</p>
+          <h2>Technical capability, backed by professional judgement.</h2>
+        </div>
+        <p>My employment experience taught me to communicate clearly, protect sensitive data and keep complex cases moving.</p>
+      </div>
+
+      <div class="experience-layout">
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-date">2025 — PRESENT</div>
+            <div class="timeline-card">
+              <div>
+                <h3>Office Administrator</h3>
+                <p>APEX Accident Solutions LTD</p>
+              </div>
+              <ul>
+                <li>Coordinate insurers, repairers, assessors and clients across active claims.</li>
+                <li>Maintain accurate case records and handle personal data with GDPR awareness.</li>
+                <li>Prioritise urgent issues and support smooth operational delivery.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal" data-delay="80">
+            <span class="timeline-dot"></span>
+            <div class="timeline-date">2021 — 2024</div>
+            <div class="timeline-card">
+              <div>
+                <h3>Claims Advisor</h3>
+                <p>Global Claims LTD</p>
+              </div>
+              <ul>
+                <li>Supported clients through recovery, replacement vehicles and legal processes.</li>
+                <li>Liaised with multiple stakeholders while meeting service expectations.</li>
+                <li>Developed calm communication and attention to detail under pressure.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal" data-delay="140">
+            <span class="timeline-dot"></span>
+            <div class="timeline-date">2026</div>
+            <div class="timeline-card">
+              <div>
+                <h3>BSc Computer Science — First Class</h3>
+                <p>University of Bradford</p>
+              </div>
+              <ul>
+                <li>Studied machine learning, distributed systems, cybersecurity and software engineering.</li>
+                <li>Completed practical work in Java, Python, SQL, networking and data analysis.</li>
+                <li>Built a broad technical foundation ready for graduate-level development.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <aside class="principles glass-card reveal" data-delay="160">
+          <div class="card-kicker">HOW I WORK</div>
+          <ol>
+            <li><span>01</span><div><strong>Understand first</strong><p>Define the real problem before jumping into tools.</p></div></li>
+            <li><span>02</span><div><strong>Build deliberately</strong><p>Make choices that are explainable, secure and maintainable.</p></div></li>
+            <li><span>03</span><div><strong>Test assumptions</strong><p>Use evidence and iteration instead of guesswork.</p></div></li>
+            <li><span>04</span><div><strong>Communicate clearly</strong><p>Technical work only creates value when people understand it.</p></div></li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-grid-bg" aria-hidden="true"></div>
+          <p class="eyebrow">04 / CONTACT</p>
+          <h2>Have a role, project or challenge worth solving?</h2>
+          <p>
+            I’m open to graduate and junior opportunities across cybersecurity, data and software.
+            Let’s start a conversation.
+          </p>
+          <div class="contact-actions">
+            <a class="button button-primary magnetic" href="mailto:YOUR_EMAIL_HERE">
+              Email me <span>↗</span>
+            </a>
+            <a class="button button-ghost magnetic" href="https://www.linkedin.com/in/YOUR_LINKEDIN_HERE" target="_blank" rel="noreferrer">
+              LinkedIn <span>↗</span>
+            </a>
+          </div>
+
+          <div class="contact-status">
+            <span class="pulse"></span>
+            Usually responds within 24 hours
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span id="year"></span> Uzair Ali. Built with intent.</p>
+    <div>
+      <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close project details">×</button>
+      <p class="eyebrow" id="modal-eyebrow">CASE STUDY</p>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="command-backdrop" id="command-menu" aria-hidden="true">
+    <div class="command-box" role="dialog" aria-modal="true" aria-label="Quick navigation">
+      <div class="command-input-row">
+        <span>⌕</span>
+        <input id="command-input" type="text" placeholder="Type a command or search…" autocomplete="off" />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="command-results" id="command-results">
+        <button data-target="#home"><span>⌂</span><strong>Home</strong><small>Go to hero</small></button>
+        <button data-target="#about"><span>◎</span><strong>About</strong><small>Who I am</small></button>
+        <button data-target="#projects"><span>◇</span><strong>Projects</strong><small>See selected work</small></button>
+        <button data-target="#experience"><span>↯</span><strong>Experience</strong><small>View my journey</small></button>
+        <button data-target="#contact"><span>✉</span><strong>Contact</strong><small>Start a conversation</small></button>
+        <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer"><span>⌘</span><strong>GitHub</strong><small>Open profile ↗</small></a>
+      </div>
+      <div class="command-footer"><span>↑↓ Navigate</span><span>↵ Select</span></div>
+    </div>
+  </div>
 </body>
 </html>
