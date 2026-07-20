@@ -300,3 +300,157 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   animateCanvas();
   window.addEventListener("resize", resizeCanvas);
 }
+
+
+// Version 2: theme toggle
+const themeButton = document.querySelector("#theme-button");
+const themeIcon = document.querySelector("#theme-icon");
+const savedTheme = localStorage.getItem("portfolio-theme");
+if (savedTheme === "light") document.body.classList.add("light");
+function syncThemeIcon() {
+  if (themeIcon) themeIcon.textContent = document.body.classList.contains("light") ? "◑" : "◐";
+}
+syncThemeIcon();
+themeButton?.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  const mode = document.body.classList.contains("light") ? "light" : "dark";
+  localStorage.setItem("portfolio-theme", mode);
+  syncThemeIcon();
+});
+
+// Version 2: animated counters
+const statNumbers = [...document.querySelectorAll(".stat-number")];
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = Number(el.dataset.count || 0);
+    const duration = 1100;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    statObserver.unobserve(el);
+  });
+}, { threshold: .6 });
+statNumbers.forEach(el => statObserver.observe(el));
+
+// Version 2: interactive pseudo-3D sphere
+const heroCanvas = document.querySelector("#hero-3d");
+if (heroCanvas) {
+  const heroCtx = heroCanvas.getContext("2d");
+  let hw = 0, hh = 0, hdpr = Math.min(window.devicePixelRatio || 1, 2);
+  let pointerX = 0, pointerY = 0;
+  const points = [];
+  const POINT_COUNT = 95;
+  const golden = Math.PI * (3 - Math.sqrt(5));
+
+  for (let i = 0; i < POINT_COUNT; i++) {
+    const y = 1 - (i / (POINT_COUNT - 1)) * 2;
+    const radius = Math.sqrt(1 - y * y);
+    const theta = golden * i;
+    points.push({
+      x: Math.cos(theta) * radius,
+      y,
+      z: Math.sin(theta) * radius,
+      size: Math.random() * 1.2 + .6
+    });
+  }
+
+  function resizeHero() {
+    const rect = heroCanvas.getBoundingClientRect();
+    hw = rect.width;
+    hh = rect.height;
+    heroCanvas.width = hw * hdpr;
+    heroCanvas.height = hh * hdpr;
+    heroCtx.setTransform(hdpr, 0, 0, hdpr, 0, 0);
+  }
+
+  const stage = document.querySelector("#hero-stage");
+  stage?.addEventListener("pointermove", e => {
+    const rect = stage.getBoundingClientRect();
+    pointerX = ((e.clientX - rect.left) / rect.width - .5) * .8;
+    pointerY = ((e.clientY - rect.top) / rect.height - .5) * .8;
+  });
+  stage?.addEventListener("pointerleave", () => { pointerX = 0; pointerY = 0; });
+
+  function rotatePoint(p, ax, ay) {
+    let x = p.x, y = p.y, z = p.z;
+    const cy = Math.cos(ay), sy = Math.sin(ay);
+    let x1 = x * cy - z * sy;
+    let z1 = x * sy + z * cy;
+    const cx = Math.cos(ax), sx = Math.sin(ax);
+    let y1 = y * cx - z1 * sx;
+    let z2 = y * sx + z1 * cx;
+    return { x: x1, y: y1, z: z2 };
+  }
+
+  function drawHero(time) {
+    heroCtx.clearRect(0, 0, hw, hh);
+    const base = time * .00025;
+    const rotated = points.map(p => rotatePoint(p, base * .55 + pointerY, base + pointerX));
+    const radius = Math.min(hw, hh) * .255;
+    const cx = hw / 2, cy = hh * .43;
+
+    heroCtx.save();
+    const glow = heroCtx.createRadialGradient(cx, cy, 0, cx, cy, radius * 1.6);
+    glow.addColorStop(0, "rgba(94,231,243,.10)");
+    glow.addColorStop(.55, "rgba(102,134,255,.05)");
+    glow.addColorStop(1, "rgba(0,0,0,0)");
+    heroCtx.fillStyle = glow;
+    heroCtx.beginPath();
+    heroCtx.arc(cx, cy, radius * 1.65, 0, Math.PI * 2);
+    heroCtx.fill();
+    heroCtx.restore();
+
+    for (let i = 0; i < rotated.length; i++) {
+      for (let j = i + 1; j < rotated.length; j++) {
+        const a = rotated[i], b = rotated[j];
+        const dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;
+        const d = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        if (d < .42 && a.z > -.45 && b.z > -.45) {
+          heroCtx.beginPath();
+          heroCtx.moveTo(cx + a.x * radius, cy + a.y * radius);
+          heroCtx.lineTo(cx + b.x * radius, cy + b.y * radius);
+          heroCtx.strokeStyle = `rgba(94,231,243,${(1 - d/.42) * .18 * ((a.z+b.z+2)/4)})`;
+          heroCtx.lineWidth = .7;
+          heroCtx.stroke();
+        }
+      }
+    }
+
+    rotated.sort((a,b) => a.z - b.z).forEach((p, idx) => {
+      const depth = (p.z + 1) / 2;
+      const x = cx + p.x * radius;
+      const y = cy + p.y * radius;
+      const size = .8 + depth * 2.3;
+      heroCtx.beginPath();
+      heroCtx.arc(x, y, size, 0, Math.PI * 2);
+      heroCtx.fillStyle = `rgba(${depth > .62 ? "94,231,243" : "157,114,255"},${.22 + depth * .62})`;
+      heroCtx.shadowBlur = depth > .7 ? 12 : 0;
+      heroCtx.shadowColor = depth > .62 ? "rgba(94,231,243,.7)" : "rgba(157,114,255,.45)";
+      heroCtx.fill();
+      heroCtx.shadowBlur = 0;
+    });
+
+    heroCtx.beginPath();
+    heroCtx.arc(cx, cy, radius * .42, 0, Math.PI * 2);
+    const core = heroCtx.createRadialGradient(cx, cy, 0, cx, cy, radius * .42);
+    core.addColorStop(0, "rgba(94,231,243,.18)");
+    core.addColorStop(1, "rgba(94,231,243,0)");
+    heroCtx.fillStyle = core;
+    heroCtx.fill();
+
+    requestAnimationFrame(drawHero);
+  }
+
+  resizeHero();
+  window.addEventListener("resize", resizeHero);
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    requestAnimationFrame(drawHero);
+  }
+}

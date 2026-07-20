@@ -12,6 +12,8 @@
   <meta property="og:url" content="https://uzair-ali.dev" />
 
   <title>Uzair Ali — Cybersecurity, Data & Software</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
 </head>
@@ -32,10 +34,14 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#growth">Growth</a>
         <a href="#contact">Contact</a>
       </div>
 
       <div class="nav-actions">
+        <button class="icon-button theme-button" id="theme-button" aria-label="Toggle theme" title="Toggle theme">
+          <span id="theme-icon">◐</span>
+        </button>
         <button class="icon-button" id="command-button" aria-label="Open command menu" title="Command menu">
           <span>⌘</span><span>K</span>
         </button>
@@ -50,6 +56,7 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#growth">Growth</a>
       <a href="#contact">Contact</a>
     </div>
   </header>
@@ -102,43 +109,62 @@
       </div>
 
       <div class="hero-visual reveal" data-delay="120">
-        <div class="orbital-card">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="orbit orbit-three"></div>
+        <div class="hero-stage" id="hero-stage">
+          <canvas id="hero-3d" aria-label="Interactive animated technology sphere"></canvas>
 
-          <div class="core">
-            <span class="core-label">SYSTEM</span>
-            <strong>ONLINE</strong>
-            <small>Portfolio v1.0</small>
+          <div class="hero-hud hud-top">
+            <span>PORTFOLIO SYSTEM</span>
+            <strong>V2.0</strong>
           </div>
 
-          <span class="tech-node node-python">Python</span>
-          <span class="tech-node node-sql">SQL</span>
-          <span class="tech-node node-siem">SIEM</span>
-          <span class="tech-node node-java">Java</span>
+          <div class="hero-hud hud-bottom">
+            <span>STATUS</span>
+            <strong><i></i> AVAILABLE</strong>
+          </div>
 
-          <div class="terminal-card">
+          <div class="floating-chip chip-one">CYBER</div>
+          <div class="floating-chip chip-two">DATA</div>
+          <div class="floating-chip chip-three">SOFTWARE</div>
+
+          <div class="terminal-card terminal-v2">
             <div class="terminal-top">
               <span></span><span></span><span></span>
               <p>uzair@portfolio:~</p>
             </div>
-            <pre><code><span class="terminal-muted">$</span> whoami
-Uzair Ali
+            <pre><code><span class="terminal-muted">$</span> deploy --profile uzair
+<span class="terminal-green">✓ degree: first_class</span>
+<span class="terminal-green">✓ focus: cyber_data_software</span>
+<span class="terminal-green">✓ status: open_to_work</span>
 
-<span class="terminal-muted">$</span> focus --current
-<span class="terminal-green">cyber · data · software</span>
-
-<span class="terminal-muted">$</span> status
-<span class="terminal-green">ready_to_build</span><span class="caret">▋</span></code></pre>
+<span class="terminal-muted">$</span> next
+<span class="terminal-cyan">building what matters</span><span class="caret">▋</span></code></pre>
           </div>
         </div>
-      </div>
+      </div></div>
 
       <a class="scroll-indicator" href="#about" aria-label="Scroll to about">
         <span>Scroll</span>
         <i></i>
       </a>
+    </section>
+
+    <section class="stats-strip container reveal" aria-label="Portfolio statistics">
+      <div class="stat-block">
+        <span class="stat-number" data-count="1">0</span>
+        <p>First-Class Degree</p>
+      </div>
+      <div class="stat-block">
+        <span class="stat-number" data-count="14">0</span>
+        <p>Core Technologies</p>
+      </div>
+      <div class="stat-block">
+        <span class="stat-number" data-count="4">0</span>
+        <p>Featured Projects</p>
+      </div>
+      <div class="stat-block">
+        <span class="stat-number" data-count="5">0</span>
+        <p>Years' Professional Experience</p>
+      </div>
     </section>
 
     <section class="section container" id="about">
@@ -389,11 +415,85 @@ Uzair Ali
       </div>
     </section>
 
+    <section class="section growth-section" id="growth">
+      <div class="container">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow">04 / CONTINUOUS GROWTH</p>
+            <h2>Learning with direction.</h2>
+          </div>
+          <p>I’m building depth in the areas that matter most for modern security and data teams.</p>
+        </div>
+
+        <div class="growth-grid">
+          <article class="growth-card reveal">
+            <div class="growth-card-top">
+              <span class="growth-icon">⌁</span>
+              <span class="growth-status active">IN PROGRESS</span>
+            </div>
+            <h3>SOC & Detection Engineering</h3>
+            <p>Developing stronger investigation, SIEM, KQL, Splunk and incident-response capability through practical labs.</p>
+            <div class="progress-track"><i style="--progress:72%"></i></div>
+            <div class="growth-tags"><span>Sentinel</span><span>Splunk</span><span>NIST</span></div>
+          </article>
+
+          <article class="growth-card reveal" data-delay="80">
+            <div class="growth-card-top">
+              <span class="growth-icon">◫</span>
+              <span class="growth-status">BUILDING</span>
+            </div>
+            <h3>Data Engineering Foundations</h3>
+            <p>Strengthening SQL, Python, data cleaning, pipeline thinking and visual communication for junior data roles.</p>
+            <div class="progress-track"><i style="--progress:64%"></i></div>
+            <div class="growth-tags"><span>Python</span><span>SQL</span><span>Pandas</span></div>
+          </article>
+
+          <article class="growth-card reveal" data-delay="140">
+            <div class="growth-card-top">
+              <span class="growth-icon">◆</span>
+              <span class="growth-status">ROADMAP</span>
+            </div>
+            <h3>Professional Certification</h3>
+            <p>Targeting an entry-level security certification to validate practical knowledge and support my first cyber role.</p>
+            <div class="progress-track"><i style="--progress:38%"></i></div>
+            <div class="growth-tags"><span>Security+</span><span>Cloud</span><span>Blue Team</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cv-section">
+      <div class="container">
+        <div class="cv-panel reveal">
+          <div class="cv-preview">
+            <div class="cv-sheet">
+              <div class="cv-sheet-head"><b>UA</b><span>CURRICULUM VITAE</span></div>
+              <h3>Uzair Ali</h3>
+              <p>Computer Science Graduate</p>
+              <div class="cv-lines">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="cv-copy">
+            <p class="eyebrow">CV / ONE CLICK AWAY</p>
+            <h2>The full picture, in one document.</h2>
+            <p>Add your latest CV to the repository and recruiters can open it directly without chasing attachments.</p>
+            <div class="cv-actions">
+              <a class="button button-primary" href="assets/Uzair-Ali-CV.pdf" target="_blank">View CV ↗</a>
+              <a class="button button-ghost" href="assets/Uzair-Ali-CV.pdf" download>Download PDF ↓</a>
+            </div>
+            <small>Upload your PDF as <code>assets/Uzair-Ali-CV.pdf</code>.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact-section" id="contact">
       <div class="container">
         <div class="contact-panel reveal">
           <div class="contact-grid-bg" aria-hidden="true"></div>
-          <p class="eyebrow">04 / CONTACT</p>
+          <p class="eyebrow">05 / CONTACT</p>
           <h2>Have a role, project or challenge worth solving?</h2>
           <p>
             I’m open to graduate and junior opportunities across cybersecurity, data and software.
@@ -418,7 +518,7 @@ Uzair Ali
   </main>
 
   <footer class="footer container">
-    <p>© <span id="year"></span> Uzair Ali. Built with intent.</p>
+    <p>© <span id="year"></span> Uzair Ali. Built with intent. Engineered to evolve.</p>
     <div>
       <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer">GitHub ↗</a>
       <a href="#home">Back to top ↑</a>
@@ -446,6 +546,7 @@ Uzair Ali
         <button data-target="#about"><span>◎</span><strong>About</strong><small>Who I am</small></button>
         <button data-target="#projects"><span>◇</span><strong>Projects</strong><small>See selected work</small></button>
         <button data-target="#experience"><span>↯</span><strong>Experience</strong><small>View my journey</small></button>
+        <button data-target="#growth"><span>△</span><strong>Growth</strong><small>See my roadmap</small></button>
         <button data-target="#contact"><span>✉</span><strong>Contact</strong><small>Start a conversation</small></button>
         <a href="https://github.com/Uzair-6" target="_blank" rel="noreferrer"><span>⌘</span><strong>GitHub</strong><small>Open profile ↗</small></a>
       </div>

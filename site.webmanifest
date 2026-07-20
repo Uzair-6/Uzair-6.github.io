@@ -1,0 +1,9 @@
+{
+  "name": "Uzair Ali Portfolio",
+  "short_name": "Uzair Ali",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070a12",
+  "theme_color": "#070a12",
+  "icons": []
+}
